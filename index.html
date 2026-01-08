@@ -1,5 +1,6 @@
 <html lang="en">
 <head>
+    <link rel="manifest" href="./manifest.json">
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
@@ -12,5 +13,19 @@
 <object width="100%" height="100%">
     <param name="movie" value="https://cdn.jsdelivr.net/gh/sasa24s/Sphere-compile@95d1d98dc38a920d02e6bbcf61620501b2bacfcb/tables/pvz_9_15.swf">
     <embed src="./swf/pvz.swf" width="100%" height="100%">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                .then(registration => {
+                    console.log('Service Worker registered:', registration);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
